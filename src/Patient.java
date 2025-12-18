@@ -28,9 +28,9 @@ public class Patient {
         this.diagnosis = diagnosis;
     }
 
-    @Override
+    .+
+            .
     public String toString() {
         return "Пациент: " + name + ", Возраст: " + age + ", Диагноз: " + diagnosis;
     }
-
 }

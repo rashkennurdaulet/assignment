@@ -1,48 +1,35 @@
-class Main {
+public class Main {
     public static void main(String[] args) {
-        Hospital myHospital = new Hospital("City Hospital №1", "ул. Абая 10");
 
-        MedicalProfessional doctor = new MedicalProfessional("Доктор Нурдаулет", "Диагност");
+        Hospital hospital = new Hospital("City Hospital №1", "Abay street 10");
 
-        Patient patient1 = new Patient("Сабыржан", 18, "Грипп");
-        Patient patient2 = new Patient("Али", 17, "Ангина");
-        Patient patient3 = new Patient("Рамазан", 17, "Перелом");
+        MedicalProfessional doctor =
+                new MedicalProfessional("Dr. Nurdaulet", 35, "Diagnostician");
 
-        myHospital.displayInfo();
-        System.out.println(patient1.toString());
-        System.out.println(patient2.toString());
-        System.out.println(patient3.toString());
+        Patient p1 = new Patient("Sabyrzhan", 18, "flu disease");
+        Patient p2 = new Patient("Ali", 17, "sore throat disease");
+        Patient p3 = new Patient("Ramazan", 17, "fracture");
 
-        doctor.treatPatient(patient1);
-        
-        System.out.println("--- Сравнение объектов ---");
+        hospital.addPatient(p1);
+        hospital.addPatient(p2);
+        hospital.addPatient(p3);
 
-        if (patient1.getAge() > patient2.getAge()) {
-            System.out.println(patient1.getName() + " старше, чем " + patient2.getName());
-        } else {
-            System.out.println(patient2.getName() + " старше или ровесник " + patient1.getName());
-        }
-        if (patient2.getAge() > patient3.getAge()) {
-            System.out.println(patient2.getName() + " старше, чем " + patient3.getName());
-        } else {
-            System.out.println(patient3.getName() + " старше или ровесник " + patient2.getName());
-        }
-        if (patient1.getAge() > patient3.getAge()) {
-            System.out.println(patient1.getName() + " старше, чем " + patient3.getName());
-        } else {
-            System.out.println(patient3.getName() + " старше или ровесник " + patient1.getName());
+        doctor.treatPatient(p1);
+
+        System.out.println("\nAll patients:");
+        hospital.displayPatients();
+
+        System.out.println("\nPatients over 17:");
+        for (Patient p : hospital.filterByAge(18)) {
+            System.out.println(p);
         }
 
 
+        System.out.println("\nSearch for patient Ali:");
+        System.out.println(hospital.searchByName("Ali"));
 
-        if (patient1.getName().equals(patient3.getName()) && patient1.getAge() == patient3.getAge()) {
-            System.out.println("Пациент 1 и Пациент 3 имеют одинаковые данные.");
-        }
-        if (patient2.getName().equals(patient3.getName()) && patient2.getAge() == patient3.getAge()) {
-            System.out.println("Пациент 2 и Пациент 3 имеют одинаковые данные.");
-        }
-        if (patient1.getName().equals(patient2.getName()) && patient1.getAge() == patient2.getAge()) {
-            System.out.println("Пациент 1 и Пациент 2 имеют одинаковые данные.");
-        }
+        System.out.println("\nSort by age:");
+        hospital.sortByAge();
+        hospital.displayPatients();
     }
 }

@@ -4,7 +4,7 @@ public class Main {
         Hospital hospital = new Hospital("City Hospital №1", "Abay street 10");
 
         MedicalProfessional doctor =
-                new MedicalProfessional("Dr. Nurdaulet", 35, "Diagnostician");
+                new MedicalProfessional("Dr. Nurdaulet", 39, "Diagnostician");
 
         Patient p1 = new Patient("Sabyrzhan", 18, "flu disease");
         Patient p2 = new Patient("Ali", 17, "sore throat disease");
